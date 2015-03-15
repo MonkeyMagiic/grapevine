@@ -1,6 +1,7 @@
 ///<reference path="service.ts" />
 var GrapeVine;
 (function (GrapeVine) {
+    'use strict';
     var Application = (function () {
         //--------------------------------------------------------------------------
         //

@@ -1,1 +1,1 @@
-{"version":3,"file":"service.js","sourceRoot":"","sources":["service.ts"],"names":["ServiceProxy","ServiceProxy.constructor"],"mappings":"AAAA,IAAM,YAAY;IAAlBA,SAAMA,YAAYA;IAIlBC,CAACA;IAADD,mBAACA;AAADA,CAACA,AAJD,IAIC"}
+{"version":3,"file":"service.js","sourceRoot":"","sources":["service.ts"],"names":["ServiceProxy","ServiceProxy.constructor"],"mappings":"AAAA,YAAY,CAAC;AACb,IAAM,YAAY;IAEdA,4EAA4EA;IAC5EA,EAAEA;IACFA,eAAeA;IACfA,EAAEA;IACFA,4EAA4EA;IAE5EA;;OAEGA;IACHA,SAXEA,YAAYA;IAYdC,CAACA;IACLD,mBAACA;AAADA,CAACA,AAbD,IAaC"}

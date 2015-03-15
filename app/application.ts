@@ -1,6 +1,6 @@
 ///<reference path="service.ts" />
 module GrapeVine {
-
+    'use strict';
     export class Application {
 
         //--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ module GrapeVine {
          */
         private dom_contentLoaded(event:Event):void {
             // Cleanup.
-            document.removeEventListener('DOMContentLoaded', <EventListener> /* cast */arguments.callee);
+            document.removeEventListener('DOMContentLoaded', <EventListener>arguments.callee);
             this.initialize();
         }
 
