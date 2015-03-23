@@ -1,55 +1,15 @@
-///<reference path="service.ts" />
-var GrapeVine;
-(function (GrapeVine) {
-    'use strict';
-    var Application = (function () {
-        //--------------------------------------------------------------------------
-        //
-        //  Constructor
-        //
-        //--------------------------------------------------------------------------
-        /**
-         *  Constructor.
-         */
-        function Application() {
-            var _this = this;
-            //--------------------------------------------------------------------------
-            //
-            //  Variables
-            //
-            //--------------------------------------------------------------------------
-            /**
-             * @private
-             */
-            this.service = new ServiceProxy();
-            document.addEventListener('DOMContentLoaded', function (event) { return _this.dom_contentLoaded(event); });
-        }
-        //--------------------------------------------------------------------------
-        //
-        //  Methods
-        //
-        //--------------------------------------------------------------------------
-        /**
-         * @private
-         */
-        Application.prototype.initialize = function () {
-        };
-        //--------------------------------------------------------------------------
-        //
-        //  Event handlers
-        //
-        //--------------------------------------------------------------------------
-        /**
-         * @private
-         * @param event
-         */
-        Application.prototype.dom_contentLoaded = function (event) {
-            // Cleanup.
-            document.removeEventListener('DOMContentLoaded', arguments.callee);
-            this.initialize();
-        };
-        return Application;
-    })();
-    GrapeVine.Application = Application;
-})(GrapeVine || (GrapeVine = {}));
+///<reference path="../typings/angularjs/angular.d.ts" />
+///<reference path="service/currencies.ts" />
+///<reference path="controller/market.ts" />
+var com;
+(function (com) {
+    var uk;
+    (function (uk) {
+        var grapevine;
+        (function (grapevine) {
+            'use strict';
+            angular.module('grapevine', []).controller('Market', grapevine.Market).service('currencies', grapevine.CurrencyService);
+        })(grapevine = uk.grapevine || (uk.grapevine = {}));
+    })(uk = com.uk || (com.uk = {}));
+})(com || (com = {}));
 //# sourceMappingURL=application.js.map

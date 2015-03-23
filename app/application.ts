@@ -1,60 +1,56 @@
-///<reference path="service.ts" />
-module GrapeVine {
+///<reference path="../typings/angularjs/angular.d.ts" />
+///<reference path="service/currencies.ts" />
+///<reference path="controller/market.ts" />
+module com.uk.grapevine {
     'use strict';
-    export class Application {
 
-        //--------------------------------------------------------------------------
-        //
-        //  Constructor
-        //
-        //--------------------------------------------------------------------------
+    angular
+        .module('grapevine', [])
+         .controller('Market', Market)
+         .service('currencies', CurrencyService);
 
-        /**
-         *  Constructor.
-         */
-        constructor() {
-            document.addEventListener('DOMContentLoaded', (event:Event) => this.dom_contentLoaded(event));
-        }
 
-        //--------------------------------------------------------------------------
-        //
-        //  Variables
-        //
-        //--------------------------------------------------------------------------
+    /*
+     export class Application {
 
-        /**
-         * @private
-         */
-        private service : ServiceProxy = new ServiceProxy();
+     //--------------------------------------------------------------------------
+     //
+     //  Constructor
+     //
+     //--------------------------------------------------------------------------
 
-        //--------------------------------------------------------------------------
-        //
-        //  Methods
-        //
-        //--------------------------------------------------------------------------
+     constructor() {
+     document.addEventListener('DOMContentLoaded', (event:Event) => this.dom_contentLoaded(event));
+     }
 
-        /**
-         * @private
-         */
-        private initialize() : void
-        {
-        }
+     //--------------------------------------------------------------------------
+     //
+     //  Variables
+     //
+     //--------------------------------------------------------------------------
 
-        //--------------------------------------------------------------------------
-        //
-        //  Event handlers
-        //
-        //--------------------------------------------------------------------------
+     private service:ServiceProxy = new ServiceProxy();
 
-        /**
-         * @private
-         * @param event
-         */
-        private dom_contentLoaded(event:Event):void {
-            // Cleanup.
-            document.removeEventListener('DOMContentLoaded', <EventListener>arguments.callee);
-            this.initialize();
-        }
+     //--------------------------------------------------------------------------
+     //
+     //  Methods
+     //
+     //--------------------------------------------------------------------------
 
-    }
+     private initialize():void {
+     }
+
+     //--------------------------------------------------------------------------
+     //
+     //  Event handlers
+     //
+     //--------------------------------------------------------------------------
+
+     private dom_contentLoaded(event:Event):void {
+     document.removeEventListener('DOMContentLoaded', <EventListener>arguments.callee);
+     this.initialize();
+     }
+
+     }
+     */
 }

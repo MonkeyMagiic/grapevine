@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="grapevine">
 <head>
     <title>Grapevine</title>
 </head>
+
+<section ng-controller="Market">
+
+    <ul>
+        <label>Amount of names {{pm.names.length}}</label>
+        <li ng-repeat="currency in pm.names">
+            <label>{{currency.code}} - {{ currency.name }}</label>
+        </li>
+    </ul>
+
+</section>
+
 <body>
+
+<!-- inject-vendor:js -->
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<!-- endinject -->
+
+<script type="text/javascript" src="app/model/currency.js"></script>
+<script type="text/javascript" src="app/service/currencies.js"></script>
+<script type="text/javascript" src="app/controller/market.js"></script>
 <script type="text/javascript" src="app/application.js"></script>
-<script type="text/javascript" src="app/service.ts"></script>
-<script type="text/javascript">
-    new GrapeVine.Application();
-</script>
+
 </body>
 </html>
