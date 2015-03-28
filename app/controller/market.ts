@@ -13,16 +13,39 @@ module com.uk.grapevine {
          */
         public static $inject = ['$scope', 'currencies'];
 
-        private testing: string[];
-
+        /**
+         * Constructor
+         *
+         * @param $scope
+         * @param currencies
+         */
         constructor(private $scope:ng.IScope, private currencies:CurrencyService) {
 
-            this.testing = (<any>$scope).testing = [];
+            this._currencyNames = (<any>$scope).currencyNames = currencies.names;
 
-            $scope.$watch('testing', () => console.log( 'testing: ', this.testing.length ), true);
+            this.$scope.$watchCollection(
+                // Collection to watch.
+                () => (<any>$scope).currencyNames,
 
-            setInterval( () => this.testing.push( "banana" + Math.random() * 100 ), 800 );
+                // Listener when watched property changes
+                (newValue:string, oldValue:string) => {
+                    console.log('testing: ', this.currencyNames.length)
+                }
+            );
+        }
 
+        /**
+         * Storage for the currencyNames property.
+         * @private
+         */
+        private _currencyNames:ICurrency[];
+
+        /**
+         * Collection of Currency Names
+         * @returns {ICurrency[]}
+         */
+        public get currencyNames():ICurrency[] {
+            return this._currencyNames;
         }
     }
 }

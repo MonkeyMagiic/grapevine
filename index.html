@@ -7,8 +7,8 @@
 <section ng-controller="Market">
 
     <ul>
-        <label>Amount of names {{pm.names.length}}</label>
-        <li ng-repeat="currency in pm.names">
+        <label>Amount of names {{currencyNames.length}}</label>
+        <li ng-repeat="currency in currencyNames">
             <label>{{currency.code}} - {{ currency.name }}</label>
         </li>
     </ul>
