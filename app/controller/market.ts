@@ -28,8 +28,11 @@ module com.uk.grapevine {
                 () => (<any>$scope).currencyNames,
 
                 // Listener when watched property changes
-                (newValue:string, oldValue:string) => {
-                    console.log('testing: ', this.currencyNames.length)
+                (newValue:ICurrency[], oldValue:ICurrency[]) => {
+
+                    console.log('collection with currency names change');
+                    console.log('newValue: ' + newValue);
+                    console.log('oldValue: ' + oldValue);
                 }
             );
         }

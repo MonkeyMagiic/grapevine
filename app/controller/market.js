@@ -17,7 +17,6 @@ var com;
                  * @param currencies
                  */
                 function Market($scope, currencies) {
-                    var _this = this;
                     this.$scope = $scope;
                     this.currencies = currencies;
                     this._currencyNames = $scope.currencyNames = currencies.names;
@@ -26,7 +25,9 @@ var com;
                     function () { return $scope.currencyNames; }, 
                     // Listener when watched property changes
                     function (newValue, oldValue) {
-                        console.log('testing: ', _this.currencyNames.length);
+                        console.log('collection with currency names change');
+                        console.log('newValue: ' + newValue);
+                        console.log('oldValue: ' + oldValue);
                     });
                 }
                 Object.defineProperty(Market.prototype, "currencyNames", {
