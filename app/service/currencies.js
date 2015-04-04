@@ -8,6 +8,11 @@ var com;
         var grapevine;
         (function (grapevine) {
             var CurrencyService = (function () {
+                //--------------------------------------------------------------------------
+                //
+                //  Constructor
+                //
+                //--------------------------------------------------------------------------
                 /**
                  * Constructor
                  * @param $rootScope
@@ -15,6 +20,11 @@ var com;
                 function CurrencyService($rootScope) {
                     var _this = this;
                     this.$rootScope = $rootScope;
+                    //--------------------------------------------------------------------------
+                    //
+                    //  Properties
+                    //
+                    //--------------------------------------------------------------------------
                     /**
                      * Storage for names retrieved from service.
                      * @private
@@ -26,6 +36,11 @@ var com;
                     request.onerror = function () { return _this.error(request.response); };
                     request.send();
                 }
+                //--------------------------------------------------------------------------
+                //
+                //  Methods
+                //
+                //--------------------------------------------------------------------------
                 /**
                  *
                  * @param data
@@ -46,6 +61,11 @@ var com;
                 CurrencyService.prototype.error = function (message) {
                     // Handle error here.
                 };
+                //--------------------------------------------------------------------------
+                //
+                //  Static properties
+                //
+                //--------------------------------------------------------------------------
                 /**
                  * $inject annotation.
                  * @type {string[]}

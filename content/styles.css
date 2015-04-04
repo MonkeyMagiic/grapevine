@@ -1,0 +1,24 @@
+/*
+    (Block) .custom-dropdown            = The main component
+    (Element) .custom-dropdown__select  = Descendant of .custom-dropdown
+    (Modifier) .custom-dropdown--*      = Different state of .custom-dropdown
+*/
+
+body {
+    background: #222;
+    padding: 1em;
+    margin: 0;
+    font-size: 16px;
+    color: #6aa7c4;
+}
+body * {
+    margin: 10px;
+    padding: 10px;
+    font-family: helvetica, sans-serif;
+}
+
+.custom-dropdown {
+    margin: 10px;
+    width: 100px;
+    display: inline-block;
+}

@@ -2,28 +2,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="grapevine">
 <head>
     <title>Grapevine</title>
+    <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .ng-hide {
+            display: none !important;
+        }
+    </style>
+    <!-- inject:css -->
+    <link href="content/styles.css" rel="stylesheet"/>
+    <!-- endinject -->
 </head>
+
+<body>
+
+<section ng-controller="NewsController">
+
+    <label>Articles published: {{articles.length}}</label>
+    <!--
+    <input type="text" ng-model="yourName" placeholder="Federal Reserve">
+    -->
+</section>
 
 <section ng-controller="Market">
 
-    <ul>
-        <label>Amount of names {{currencyNames.length}}</label>
-        <li ng-repeat="currency in currencyNames">
-            <label>{{currency.code}} - {{ currency.name }}</label>
-        </li>
-    </ul>
+    <label>Currency Names Loaded: {{currencyNames.length}}</label>
+    <select class="custom-dropdown"
+            ng-model="selectedItem"
+            ng-options="item as item.code for item in currencyNames">
+    </select>
+    <pre>{{selectedItem | json}}</pre>
 
 </section>
-
-<body>
 
 <!-- inject-vendor:js -->
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <!-- endinject -->
 
 <script type="text/javascript" src="app/model/currency.js"></script>
+<script type="text/javascript" src="app/model/article.js"></script>
+
+
 <script type="text/javascript" src="app/service/currencies.js"></script>
 <script type="text/javascript" src="app/controller/market.js"></script>
+<script type="text/javascript" src="app/controller/news.controller.js"></script>
 <script type="text/javascript" src="app/application.js"></script>
 
 </body>
