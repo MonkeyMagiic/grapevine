@@ -62,4 +62,4 @@ var com;
         })(grapevine = uk.grapevine || (uk.grapevine = {}));
     })(uk = com.uk || (com.uk = {}));
 })(com || (com = {}));
-//# sourceMappingURL=market.js.map
+//# sourceMappingURL=market.controller.js.map

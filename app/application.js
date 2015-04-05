@@ -1,6 +1,6 @@
 ///<reference path="../typings/angularjs/angular.d.ts" />
 ///<reference path="service/currencies.ts" />
-///<reference path="controller/market.ts" />
+///<reference path="controller/market.controller.ts" />
 ///<reference path="controller/news.controller.ts" />
 var com;
 (function (com) {

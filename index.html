@@ -11,6 +11,7 @@
     </style>
     <!-- inject:css -->
     <link href="content/styles.css" rel="stylesheet"/>
+    <link href="content/chart.css" rel="stylesheet"/>
     <!-- endinject -->
 </head>
 
@@ -19,9 +20,8 @@
 <section ng-controller="NewsController">
 
     <label>Articles published: {{articles.length}}</label>
-    <!--
-    <input type="text" ng-model="yourName" placeholder="Federal Reserve">
-    -->
+    <!--<input type="text" ng-model="yourName" placeholder="Federal Reserve"> -->
+
 </section>
 
 <section ng-controller="Market">
@@ -44,7 +44,7 @@
 
 
 <script type="text/javascript" src="app/service/currencies.js"></script>
-<script type="text/javascript" src="app/controller/market.js"></script>
+<script type="text/javascript" src="app/controller/market.controller.js"></script>
 <script type="text/javascript" src="app/controller/news.controller.js"></script>
 <script type="text/javascript" src="app/application.js"></script>
 
