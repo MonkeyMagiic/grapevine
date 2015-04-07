@@ -20,6 +20,10 @@
 <section ng-controller="NewsController">
 
     <label>Articles published: {{articles.length}}</label>
+    <filter-select
+
+            label-field="name">
+    </filter-select>
     <!--<input type="text" ng-model="yourName" placeholder="Federal Reserve"> -->
 
 </section>
@@ -37,16 +41,27 @@
 
 <!-- inject-vendor:js -->
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/d3/d3.js" charset="utf-8"></script>
 <!-- endinject -->
 
+<!-- inject:js -->
+<!--    models -->
 <script type="text/javascript" src="app/model/currency.js"></script>
 <script type="text/javascript" src="app/model/article.js"></script>
 
-
+<!--    services -->
 <script type="text/javascript" src="app/service/currencies.js"></script>
+
+<!--    controllers -->
 <script type="text/javascript" src="app/controller/market.controller.js"></script>
 <script type="text/javascript" src="app/controller/news.controller.js"></script>
+
+<!--    config -->
 <script type="text/javascript" src="app/application.js"></script>
+<!-- endinject -->
+
+<!--    view/directives -->
+<script type="text/javascript" src="app/view/chart.testing.js"></script>
 
 </body>
 </html>
