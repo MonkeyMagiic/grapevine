@@ -29,7 +29,7 @@ var com;
                                 item = results[i];
                                 items.push(new Article(item.id, new Date(item.webPublicationDate), item.webTitle));
                                 i++;
-                            }
+                            } // End of loop.
                             return items;
                         };
                         var request = new XMLHttpRequest();
@@ -38,7 +38,9 @@ var com;
                         request.onerror = function () { return reject(request.response); };
                         request.send();
                     });
-                    p.then(function (value) { return $scope.$apply(function () { return _this._articles.push.apply(_this._articles, value); }); }).then(function () { return console.log(_this._articles); });
+                    p
+                        .then(function (value) { return $scope.$apply(function () { return _this._articles.push.apply(_this._articles, value); }); })
+                        .then(function () { return console.log(_this._articles); });
                 }
                 Object.defineProperty(NewsController.prototype, "articles", {
                     get: function () {

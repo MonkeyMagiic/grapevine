@@ -27,7 +27,9 @@ var com;
                     this._currencyNames = $scope.currencyNames = currencies.names;
                     this.$scope.$watchCollection(
                     // Collection to watch.
+                    // Collection to watch.
                     function () { return $scope.currencyNames; }, 
+                    // Listener when watched property changes
                     // Listener when watched property changes
                     function (newValue, oldValue) {
                         console.log('collection with currency names change');

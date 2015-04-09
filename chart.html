@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="grapevine">
+<head>
+    <title>Grapevine</title>
+
+    <link href="content/timechart.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <section ng-controller="EuroFxController">
+        <input type="text" ng-model="ccyPair"/>
+        <button ng-click="search()">Go</button>
+        <timechart data="{{graphData}}" />
+    </section>
+
+    <!-- Vendor JS -->
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/d3/d3.js" charset="utf-8"></script>
+
+    <!-- Directives -->
+    <script type="text/javascript" src="app/directive/timechart.js"></script>
+
+     <!-- Controllers -->
+    <script type="text/javascript" src="app/controller/eurofx.controller.js"></script>
+
+     <!-- Services -->
+    <script type="text/javascript" src="app/service/eurofx.js"></script>
+
+    <!-- Application -->
+    <script type="text/javascript" src="app/application.js"></script>
+</body>
+</html>

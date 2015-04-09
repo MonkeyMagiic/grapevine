@@ -1,0 +1,28 @@
+.timechart {
+	font: 10px sans-serif !important;
+	width: 960px;
+	height: 500px;
+	color: #000 !important;
+	background-color: #fff !important;
+}
+
+.timechart .axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.timechart .axis text {
+    color: #000;
+    stroke: none;
+}
+
+.timechart .x.axis path {
+	display: none;
+}
+
+.timechart .line {
+	fill: none;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+}
