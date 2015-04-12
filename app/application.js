@@ -12,14 +12,7 @@ var com;
         var grapevine;
         (function (grapevine) {
             'use strict';
-            angular
-                .module('grapevine', [])
-                .controller('Market', grapevine.Market)
-                .controller('NewsController', grapevine.NewsController)
-                .controller('EuroFxController', grapevine.EuroFxController)
-                .service('currencies', grapevine.CurrencyService)
-                .service('eurofx', grapevine.EuroFxService)
-                .directive('timechart', grapevine.TimeChart.factory());
+            angular.module('grapevine', []).controller('Market', grapevine.Market).controller('NewsController', grapevine.NewsController).controller('EuroFxController', grapevine.EuroFxController).service('currencies', grapevine.CurrencyService).service('eurofx', grapevine.EuroFxService).directive('timechart', grapevine.TimeChart.factory());
         })(grapevine = uk.grapevine || (uk.grapevine = {}));
     })(uk = com.uk || (com.uk = {}));
 })(com || (com = {}));

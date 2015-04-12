@@ -82,3 +82,4 @@ function renderGraph(data) {
     svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", ".71em").style("text-anchor", "end").text("EUR (€)");
     svg.append("path").datum(data).attr("class", "line").attr("d", line);
 }
+//# sourceMappingURL=main.js.map

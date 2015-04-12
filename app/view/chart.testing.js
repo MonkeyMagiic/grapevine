@@ -6,20 +6,13 @@
 
     angular
         .module('grapevine')
-        .directive('filterSelect', filterSelect);
-
-    // constants
-
-    var margin = 20,
-        width = 960,
-        height = 500 - .5 - margin,
-        color = d3.interpolateRgb("#f77", "#77f");
+        .directive('chart', chart);
 
     /**
      * Constructor
      * @returns {{controller: controller, controllerAs: string, link: link, restrict: string, transclude: boolean, scope: {sourceProvider: string, selectedItem: string, autoSelect: string}, template: string}}
      */
-    function filterSelect() {
+    function chart() {
 
         var directive = {
             controller: controller,
@@ -123,11 +116,13 @@
             var aLineContainer = lines.enter().append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            aLineContainer.append("path")
+            aLineContainer
+                .append("path")
                 .attr("class", "area")
                 .attr("d", area);
 
-            aLineContainer.append("path")
+            aLineContainer
+                .append("path")
                 .attr("class", "line")
                 .attr("d", line);
 

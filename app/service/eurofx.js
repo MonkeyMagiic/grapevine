@@ -26,7 +26,9 @@ var com;
                         date.setMonth(date.getMonth() - 24);
                     else if (timerange == "5y")
                         date.setMonth(date.getMonth() - 60);
-                    var format = function (v) { return v < 10 ? "0" + v : v; };
+                    var format = function (v) {
+                        return v < 10 ? "0" + v : v;
+                    };
                     var ccy = ccyPair.toLowerCase().replace(/[^a-z]+/g, "").replace("eur", "");
                     var datestamp = encodeURIComponent(date.getFullYear() + "-" + format(date.getMonth()) + "-" + format(date.getDate()));
                     var request = new XMLHttpRequest();

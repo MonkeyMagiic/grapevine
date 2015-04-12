@@ -28,41 +28,25 @@ var com;
                             var width = _this.graphElem.clientWidth - margin.left - margin.right;
                             var height = _this.graphElem.clientHeight - margin.top - margin.bottom;
                             var parseDate = d3.time.format("%Y-%m-%d").parse;
-                            var x = d3.time.scale()
-                                .range([0, width]);
-                            var y = d3.scale.linear()
-                                .range([height, 0]);
-                            var xAxis = d3.svg.axis()
-                                .scale(x)
-                                .orient("bottom");
-                            var yAxis = d3.svg.axis()
-                                .scale(y)
-                                .orient("left");
-                            var line = d3.svg.line()
-                                .x(function (d) { return x(parseDate(d.time)); })
-                                .y(function (d) { return y(d.value); });
-                            var svg = d3.select(_this.graphElem).append("svg")
-                                .attr("width", width + margin.left + margin.right)
-                                .attr("height", height + margin.top + margin.bottom)
-                                .append("g")
-                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-                            x.domain(d3.extent(data, function (d) { return parseDate(d.time); }));
-                            y.domain(d3.extent(data, function (d) { return d.value; }));
-                            svg.append("g")
-                                .attr("class", "x axis")
-                                .attr("transform", "translate(0," + height + ")")
-                                .call(xAxis);
-                            svg.append("g")
-                                .attr("class", "y axis")
-                                .call(yAxis)
-                                .append("text")
-                                .attr("transform", "rotate(-90)")
-                                .attr("y", 6)
-                                .attr("dy", ".71em");
-                            svg.append("path")
-                                .datum(data)
-                                .attr("class", "line")
-                                .attr("d", line);
+                            var x = d3.time.scale().range([0, width]);
+                            var y = d3.scale.linear().range([height, 0]);
+                            var xAxis = d3.svg.axis().scale(x).orient("bottom");
+                            var yAxis = d3.svg.axis().scale(y).orient("left");
+                            var line = d3.svg.line().x(function (d) {
+                                return x(parseDate(d.time));
+                            }).y(function (d) {
+                                return y(d.value);
+                            });
+                            var svg = d3.select(_this.graphElem).append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                            x.domain(d3.extent(data, function (d) {
+                                return parseDate(d.time);
+                            }));
+                            y.domain(d3.extent(data, function (d) {
+                                return d.value;
+                            }));
+                            svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
+                            svg.append("g").attr("class", "y axis").call(yAxis).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", ".71em");
+                            svg.append("path").datum(data).attr("class", "line").attr("d", line);
                         }
                     };
                 }
