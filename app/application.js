@@ -5,6 +5,7 @@
 ///<reference path="controller/eurofx.controller.ts" />
 ///<reference path="controller/news.controller.ts" />
 ///<reference path="directive/timechart.ts" />
+///<reference path="directive/ticking.chart.ts" />
 var com;
 (function (com) {
     var uk;
@@ -12,7 +13,7 @@ var com;
         var grapevine;
         (function (grapevine) {
             'use strict';
-            angular.module('grapevine', []).controller('Market', grapevine.Market).controller('NewsController', grapevine.NewsController).controller('EuroFxController', grapevine.EuroFxController).service('currencies', grapevine.CurrencyService).service('eurofx', grapevine.EuroFxService).directive('timechart', grapevine.TimeChart.factory());
+            angular.module('grapevine', []).controller('Market', grapevine.Market).controller('NewsController', grapevine.NewsController).controller('EuroFxController', grapevine.EuroFxController).service('currencies', grapevine.CurrencyService).service('eurofx', grapevine.EuroFxService).directive('timechart', grapevine.TimeChart.factory()).directive('timeSeriesChart', grapevine.TickingChart.factory());
         })(grapevine = uk.grapevine || (uk.grapevine = {}));
     })(uk = com.uk || (com.uk = {}));
 })(com || (com = {}));

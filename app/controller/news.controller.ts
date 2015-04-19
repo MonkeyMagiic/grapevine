@@ -34,7 +34,7 @@ module com.uk.grapevine {
          */
         private static SEARCH_API:string = NewsController.DOMAIN + "search?api-key=" + NewsController.USAGE_KEY + "&show-tags=all&q=federal,%20reserve";
 
-        
+
         //--------------------------------------------------------------------------
         //
         //  Constructor
@@ -52,9 +52,9 @@ module com.uk.grapevine {
          *
          * @param $scope
          */
-        constructor(private $scope:ng.IScope) {
+        constructor(private $scope:NewsScope) {
 
-            this._articles = (<any>$scope).articles = [];
+            this._articles = $scope.articles = [];
 
             var p:Promise<Article[]> = new Promise<Article[]>((resolve:Function, reject:Function) => {
 
@@ -84,7 +84,7 @@ module com.uk.grapevine {
 
             p
                 .then((value)=> $scope.$apply(()=> this._articles.push.apply(this._articles, value)))
-                .then(() => console.log(this._articles));
+                .then(() => console.log('Articles loading complete: ' + this._articles));
         }
 
         //--------------------------------------------------------------------------
@@ -98,5 +98,9 @@ module com.uk.grapevine {
         public get articles():Article[] {
             return this._articles;
         }
+    }
+
+    export interface NewsScope extends ng.IScope {
+        articles: Article[];
     }
 }

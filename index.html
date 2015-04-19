@@ -17,11 +17,14 @@
 
 <body>
 
-<section ng-controller="NewsController">
+<section ng-controller="NewsController as pm">
 
-    <label>Articles published: {{articles.length}}</label>
-    <chart label-field="name"></chart>
-    <!--<input type="text" ng-model="yourName" placeholder="Federal Reserve"> -->
+    <label>Articles published: {{pm.articles.length}}</label>
+
+    <chart data="pm.articles" dummy="pm.articles"></chart>
+
+    <ticking-chart></ticking-chart>
+    <time-series-chart data="pm.articles"></time-series-chart>
 
 </section>
 
@@ -36,13 +39,11 @@
 
 </section>
 
-<!--
 <section ng-controller="EuroFxController">
     <input type="text" ng-model="ccyPair"/>
     <button ng-click="search()">Go</button>
-    <timechart data="{{graphData}}" />
+    <timechart data="{{graphData}}"/>
 </section>
--->
 
 <!-- inject-vendor:js -->
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -63,13 +64,16 @@
 <script type="text/javascript" src="app/controller/news.controller.js"></script>
 <script type="text/javascript" src="app/controller/eurofx.controller.js"></script>
 
+<script type="text/javascript" src="app/directive/timechart.js"></script>
+<script type="text/javascript" src="app/directive/ticking.chart.js"></script>
+
 <!--    config -->
 <script type="text/javascript" src="app/application.js"></script>
 <!-- endinject -->
 
 <!--    view/directives -->
 <script type="text/javascript" src="app/view/chart.testing.js"></script>
-<script type="text/javascript" src="app/directive/timechart.js"></script>
+<script type="text/javascript" src="app/view/chart.ticking.js"></script>
 
 </body>
 </html>

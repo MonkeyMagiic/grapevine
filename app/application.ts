@@ -5,6 +5,7 @@
 ///<reference path="controller/eurofx.controller.ts" />
 ///<reference path="controller/news.controller.ts" />
 ///<reference path="directive/timechart.ts" />
+///<reference path="directive/ticking.chart.ts" />
 
 module com.uk.grapevine {
     'use strict';
@@ -16,5 +17,6 @@ module com.uk.grapevine {
         .controller('EuroFxController', EuroFxController)
         .service('currencies', CurrencyService)
         .service('eurofx', EuroFxService)
-        .directive('timechart', TimeChart.factory());
+        .directive('timechart', TimeChart.factory())
+        .directive('timeSeriesChart', TickingChart.factory());
 }
