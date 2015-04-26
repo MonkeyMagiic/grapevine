@@ -21,13 +21,16 @@
 
     <label>Articles published: {{pm.articles.length}}</label>
 
+    <!---
     <chart data="pm.articles" dummy="pm.articles"></chart>
 
     <ticking-chart></ticking-chart>
+    -->
     <time-series-chart data="pm.articles"></time-series-chart>
 
 </section>
 
+<!--
 <section ng-controller="Market">
 
     <label>Currency Names Loaded: {{currencyNames.length}}</label>
@@ -44,6 +47,7 @@
     <button ng-click="search()">Go</button>
     <timechart data="{{graphData}}"/>
 </section>
+-->
 
 <!-- inject-vendor:js -->
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
