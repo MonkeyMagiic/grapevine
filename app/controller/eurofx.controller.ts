@@ -11,9 +11,10 @@ module com.uk.grapevine {
 
         constructor(private $scope: EuroFxScope, private eurofx: EuroFxService) {
             $scope.graphData = [];
+            $scope.ccyPair = "EURUSD";
 
             $scope.search = function() {
-                eurofx.query($scope.ccyPair, "3m", (data: TimeChartData[]) => {
+                eurofx.query($scope.ccyPair, "6m", (data: TimeChartData[]) => {
                     $scope.$apply(function() {
                         $scope.graphData = data;
                     });
@@ -22,6 +23,8 @@ module com.uk.grapevine {
                     console.log(msg);
                 });
             };
+
+            $scope.search();
         }
     }
 

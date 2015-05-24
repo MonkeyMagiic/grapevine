@@ -38,100 +38,97 @@ module com.uk.grapevine {
 
         private _surface:D3.Selection;
 
+        private _margin:any = {top: 30, right: 30, bottom: 30, left: 60};
+
+        /**
+         * Width of component in pixels.
+         * @type {number}
+         * @private
+         */
+        private _width:number = 900;
+
+        /**
+         * Height of the component in pixels.
+         * @type {number}
+         * @private
+         */
+        private _height:number = 500;
+
         constructor() {
 
             this.link = ($scope:DataScope<Article>, element:ng.IAugmentedJQuery, attrs:ng.IAttributes) => {
 
-                var margin = {top: 30, right: 30, bottom: 30, left: 60},
-                    width = 500 - margin.left - margin.right,
-                    height = 300 - margin.top - margin.bottom;
-
                 // set up initial svg object
                 this._surface = d3.select(element[0])
                     .append("svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
+                    .attr("width", this._width)
+                    .attr("height", this._height);
 
                 // Add listeners.
                 $scope.$watchCollection(
                     'data',
-                    (newValue:Article[], oldValue:Article[]) => this.invalidateDisplayList(newValue)
+                    (newValue:Article[], oldValue:Article[]) => this.validateDisplayList(newValue)
                 );
             }
         }
 
-        private invalidateDisplayList(value:Array<any>):void {
+        private validateDisplayList(value:Array<Article>):void {
 
-            var i:number = 0;
-            while (i < value.length) {
-                console.log(value[i])
-                i++;
-            } // End of loop.
+            ////// DEBUGGING INFORMATION
 
-            var margin = {top: 30, right: 30, bottom: 30, left: 60},
-                width = 500 - margin.left - margin.right,
-                height = 300 - margin.top - margin.bottom;
+            value.forEach(item  => {
+                console.log('Item to be rendered: ' + item.date + ' ' + item.title)
+            })
 
-            var data = [
-                [12345, 42345, 3234, 22345, 72345, 62345, 32345, 92345, 52345, 22345],
-                [1234, 4234, 3234, 2234, 7234, 6234, 3234, 9234, 5234, 2234]
-            ];
+            ////// END
+            var w:number = this._width - this._margin.left - this._margin.right,
+                h:number = this._height - this._margin.top - this._margin.bottom;
 
-            var x:LinearScale = d3.scale.linear().domain([0, data[0].length]).range([0, width]),
-                y:LinearScale = d3.scale.linear().domain([0, d3.max(data[0])]).range([height, 0]),
-                xAxis:Axis = d3.svg.axis().scale(x).ticks(10),
-                yAxis:Axis = d3.svg.axis().scale(y).ticks(10).orient("left");
+            var data = [12345, 42345, 3234, 22345, 72345, 62345, 32345, 92345, 52345, 22345];
 
-            var line = d3.svg.line()
-                .x(function (d, i) {
-                    return x(i);
-                })
-                .y(function (d) {
-                    return y(d);
-                });
+            var scaleX:LinearScale = d3.scale.linear().domain([0, data.length]).range([0, w]),
+                scaleY:LinearScale = d3.scale.linear().domain([d3.min(data), d3.max(data)]).range([h, 0]),
+                xAxis:Axis = d3.svg.axis().scale(scaleX).ticks(10),
+                yAxis:Axis = d3.svg.axis().scale(scaleY).ticks(10).orient("left");
 
-            var area = d3.svg.area()
-                .x(line.x())
-                .y1(line.y())
-                .y0(y(0));
+            var line:Line = d3.svg.line()
+                .x((data:number, index:number) => scaleX(index))
+                .y((data:number) => scaleY(data));
 
-            var lines = this._surface.selectAll("g")
-                .data(data);
+            // Enter
+            var lineGraphics:D3.Selection = this._surface.append("g");
 
-            var aLineContainer = lines.enter().append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            aLineContainer
+            lineGraphics
                 .append("path")
-                .attr("class", "area")
-                .attr("d", area);
-
-            aLineContainer
-                .append("path")
+                .datum(data)
+                .attr("transform", "translate(" + this._margin.left + "," + this._margin.top + ")")
                 .attr("class", "line")
                 .attr("d", line);
 
-            aLineContainer.selectAll(".dot")
-                .data(function (d, i) {
-                    return d;
-                })
+            lineGraphics.selectAll(".dot")
+                .data(data)
                 .enter()
-                .append("circle")
+                .append("svg:circle")
                 .attr("class", "dot")
+                .attr("transform", "translate(" + this._margin.left + "," + this._margin.top + ")")
                 .attr("cx", line.x())
                 .attr("cy", line.y())
-                .attr("r", 3.0);
+                .attr("r", 3.0)
+                .append("svg:title")
+                .text(function (d) {
+                    return d;
+                });
 
             // Add the x-axis.
             this._surface.append("g")
                 .attr("class", "x axis")
-                .attr("transform", "translate(" + margin.left + "," + (height + margin.top) + ")")
+                .attr("transform", "translate(" + this._margin.left + "," + (h + this._margin.top) + ")")
                 .call(xAxis);
 
             // Add the y-axis.
             this._surface.append("g")
                 .attr("class", "y axis")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .attr("transform", "translate(" + this._margin.left + "," + this._margin.top + ")")
                 .call(yAxis);
         }
     }

@@ -13,8 +13,9 @@ var com;
                     this.$scope = $scope;
                     this.eurofx = eurofx;
                     $scope.graphData = [];
+                    $scope.ccyPair = "EURUSD";
                     $scope.search = function () {
-                        eurofx.query($scope.ccyPair, "3m", function (data) {
+                        eurofx.query($scope.ccyPair, "6m", function (data) {
                             $scope.$apply(function () {
                                 $scope.graphData = data;
                             });
@@ -23,6 +24,7 @@ var com;
                             console.log(msg);
                         });
                     };
+                    $scope.search();
                 }
                 EuroFxController.$inject = ['$scope', 'eurofx'];
                 return EuroFxController;

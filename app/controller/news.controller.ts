@@ -79,7 +79,6 @@ module com.uk.grapevine {
                 request.onload = () => resolve(translator(request.response));
                 request.onerror = () => reject(request.response);
                 request.send();
-
             });
 
             p
@@ -93,6 +92,9 @@ module com.uk.grapevine {
         //
         //--------------------------------------------------------------------------
 
+        /**
+         * @private
+         */
         private _articles:Article[];
 
         public get articles():Article[] {

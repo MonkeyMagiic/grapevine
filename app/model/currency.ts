@@ -1,6 +1,3 @@
-// Should we still adopt this style of "I" for interfaces
-// At the moment, TypeScript does not allow use get/set methods(accessors) in interfaces. For example:
-// get name() : String;
 interface ICurrency {
 
     name : string;

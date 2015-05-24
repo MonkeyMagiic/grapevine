@@ -45,6 +45,7 @@ module com.uk.grapevine {
                     var y = d3.scale.linear()
                         .range([height, 0]);
 
+
                     var xAxis = d3.svg.axis()
                         .scale(x)
                         .orient("bottom");

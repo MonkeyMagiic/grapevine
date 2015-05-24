@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="grapevine">
 <head>
-    <title>Grapevine</title>
+    <title>The Economic Digestive</title>
     <style>
         /* This helps the ng-show/ng-hide animations start at the right place. */
         /* Since Angular has this but needs to load, this gives us the class early. */
@@ -9,7 +9,9 @@
             display: none !important;
         }
     </style>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <!-- inject:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
     <link href="content/styles.css" rel="stylesheet"/>
     <link href="content/timechart.css" rel="stylesheet"/>
     <!-- endinject -->
@@ -17,17 +19,36 @@
 
 <body>
 
+<!--
+<section ng-controller="CurrencyController as pm">
+    <md-autocomplete
+            ng-disabled="pm.isDisabled"
+            md-no-cache="pm.noCache"
+            md-selected-item="pm.selectedItem"
+            md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+            md-search-text="pm.searchText"
+            md-selected-item-change="pm.selectedItemChange(item)"
+            md-items="item in pm.querySearch(ctrl.searchText)"
+            md-item-text="item.display"
+            md-min-length="0"
+            placeholder="Select currency pairs?">
+        <md-item-template>
+            <span md-highlight-text="pm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+            No matches found for "{{pm.searchText}}".
+        </md-not-found>
+    </md-autocomplete>
+</section>
+-->
+
 <section ng-controller="NewsController as pm">
-
     <label>Articles published: {{pm.articles.length}}</label>
-
     <!---
-    <chart data="pm.articles" dummy="pm.articles"></chart>
-
-    <ticking-chart></ticking-chart>
+        <chart data="pm.articles" dummy="pm.articles"></chart>
+        <ticking-chart></ticking-chart>
     -->
     <time-series-chart data="pm.articles"></time-series-chart>
-
 </section>
 
 <!--
@@ -41,17 +62,18 @@
     <pre>{{selectedItem | json}}</pre>
 
 </section>
-
+-->
 <section ng-controller="EuroFxController">
     <input type="text" ng-model="ccyPair"/>
     <button ng-click="search()">Go</button>
     <timechart data="{{graphData}}"/>
 </section>
--->
+
 
 <!-- inject-vendor:js -->
 <script type="text/javascript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="bower_components/d3/d3.js" charset="utf-8"></script>
+<script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
 <!-- endinject -->
 
 <!-- inject:js -->
@@ -64,9 +86,10 @@
 <script type="text/javascript" src="app/service/eurofx.js"></script>
 
 <!--    controllers -->
+<script type="text/javascript" src="app/controller/currency.controller.js"></script>
+<script type="text/javascript" src="app/controller/eurofx.controller.js"></script>
 <script type="text/javascript" src="app/controller/market.controller.js"></script>
 <script type="text/javascript" src="app/controller/news.controller.js"></script>
-<script type="text/javascript" src="app/controller/eurofx.controller.js"></script>
 
 <script type="text/javascript" src="app/directive/timechart.js"></script>
 <script type="text/javascript" src="app/directive/ticking.chart.js"></script>
